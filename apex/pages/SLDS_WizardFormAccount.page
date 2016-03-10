@@ -13,7 +13,7 @@
                         <div class="slds-form-element slds-size--1-of-1 slds-is-required" ng-class="{'slds-has-error': inputForm.accName.$invalid && inputForm.accName.$dirty}">
                             <label class="slds-form-element__label" for="accName">{!$ObjectType.Account.Fields.Name.Label}</label>
                             <input name="accName" ng-model="wrapper.account.Name" class="slds-input" type="text"
-                                 required="true" ng-maxlength="{!$ObjectType.Account.Fields.Name.Length}"  />
+                                 required="true" ng-maxlength="{!$ObjectType.Account.Fields.Name.Length}" />
                             <div ng-messages="inputForm.accName.$error" ng-if="inputForm.accName.$dirty">
                                 <div ng-message="required" class="slds-form-element__help">『{!$ObjectType.Account.Fields.Name.Label}』を入力してください</div>
                                 <div ng-message="maxlength" class="slds-form-element__help">Max Length = {!$ObjectType.Account.Fields.Name.Length}</div>
@@ -32,7 +32,7 @@
                         <div class="slds-form-element slds-size--1-of-2" ng-class="{'slds-has-error': inputForm.billingPostalCode.$invalid && inputForm.billingPostalCode.$dirty}" style="width: 50%;">
                             <label class="slds-form-element__label" for="billingPostalCode">{!$ObjectType.Account.Fields.BillingPostalCode.Label}</label>
                             <input name="billingPostalCode" ng-model="wrapper.account.BillingPostalCode" class="slds-input" type="text"
-                                ng-maxlength="{!$ObjectType.Account.Fields.BillingPostalCode.Length}"  />
+                                ng-maxlength="{!$ObjectType.Account.Fields.BillingPostalCode.Length}" />
                             <!-- エラーメッセージ -->
                             <div ng-messages="inputForm.billingPostalCode.$error" ng-if="inputForm.billingPostalCode.$dirty">
                                 <div ng-message="maxlength" class="slds-form-element__help">Max Length = {!$ObjectType.Account.Fields.BillingPostalCode.Length}</div>
@@ -45,7 +45,7 @@
                         <div class="slds-form-element slds-size--1-of-2" ng-class="{'slds-has-error': inputForm.billingState.$invalid && inputForm.billingState.$dirty}">
                             <label class="slds-form-element__label" for="billingState">{!$ObjectType.Account.Fields.BillingState.Label}</label>
                             <input name="billingState" ng-model="wrapper.account.BillingState" class="slds-input" type="text"
-                                ng-maxlength="{!$ObjectType.Account.Fields.BillingState.Length}"  />
+                                ng-maxlength="{!$ObjectType.Account.Fields.BillingState.Length}" />
                             <!-- エラーメッセージ -->
                             <div ng-messages="inputForm.billingState.$error" ng-if="inputForm.billingState.$dirty">
                                 <div ng-message="maxlength" class="slds-form-element__help">Max Length = {!$ObjectType.Account.Fields.BillingState.Length}</div>
@@ -55,7 +55,7 @@
                         <div class="slds-form-element slds-size--1-of-2" ng-class="{'slds-has-error': inputForm.billingCity.$invalid && inputForm.billingCity.$dirty}">
                             <label class="slds-form-element__label" for="billingCity">{!$ObjectType.Account.Fields.BillingCity.Label}</label>
                             <input name="billingCity" ng-model="wrapper.account.BillingCity" class="slds-input" type="text"
-                                ng-maxlength="{!$ObjectType.Account.Fields.BillingCity.Length}"  />
+                                ng-maxlength="{!$ObjectType.Account.Fields.BillingCity.Length}" />
                             <!-- エラーメッセージ -->
                             <div ng-messages="inputForm.billingCity.$error" ng-if="inputForm.billingCity.$dirty">
                                 <div ng-message="maxlength" class="slds-form-element__help">Max Length = {!$ObjectType.Account.Fields.BillingCity.Length}</div>
@@ -67,7 +67,7 @@
                         <!-- 町名・番地(請求先) -->
                         <div class="slds-form-element slds-size--1-of-1" ng-class="{'slds-has-error': inputForm.billingStreet.$invalid && inputForm.billingStreet.$dirty}">
                             <label class="slds-form-element__label" for="billingStreet">{!$ObjectType.Account.Fields.BillingStreet.Label}</label>
-                            <textarea name="billingStreet" ng-model="wrapper.account.BillingStreet" class="slds-input"
+                            <textarea name="billingStreet" ng-model="wrapper.account.BillingStreet" class="slds-textarea" rows="5"
                                 ng-maxlength="{!$ObjectType.Account.Fields.BillingStreet.Length}" />
                             <!-- エラーメッセージ -->
                             <div ng-messages="inputForm.billingStreet.$error" ng-if="inputForm.billingStreet.$dirty">
