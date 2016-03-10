@@ -1,0 +1,72 @@
+<apex:page showHeader="false" applyHtmlTag="false" applyBodyTag="false" standardStylesheets="false">
+    <div class="slds" id="input-form">
+        <!-- Navi -->
+        <c:SLDS_WizardFormNavi />
+        <!-- Form -->
+        <form name="inputForm" novalidate="true" class="slds-m-horizontal--small">
+            <!-- 基本情報 -->
+            <fieldset class="slds-form--compound">
+                <legend class="slds-form-element__label"></legend>
+                <div class="form-element__group">
+                    <div class="slds-form-element__row">
+                        <!-- 姓 -->
+                        <div class="slds-form-element slds-size--1-of-2 slds-is-required" ng-class="{'slds-has-error': inputForm.lastName.$invalid && inputForm.lastName.$dirty}">
+                            <label class="slds-form-element__label" for="lastName">{!$ObjectType.Contact.Fields.LastName.Label}</label>
+                            <input name="lastName" ng-model="wrapper.contact.LastName" class="slds-input" type="text"
+                                                 required="true" ng-maxlength="{!$ObjectType.Contact.Fields.LastName.Length}" />
+                            <!-- エラーメッセージ -->
+                            <div ng-messages="inputForm.lastName.$error" ng-if="inputForm.lastName.$dirty">
+                                <div ng-message="required" class="slds-form-element__help">『{!$ObjectType.Contact.Fields.LastName.Label}』を入力してください</div>
+                                <div ng-message="maxlength" class="slds-form-element__help">Max Length = {!$ObjectType.Contact.Fields.LastName.Length}</div>
+                            </div>
+                        </div>
+                        <!-- 名 -->
+                        <div class="slds-form-element slds-size--1-of-2" ng-class="{'slds-has-error': inputForm.firstName.$invalid && inputForm.firstName.$dirty}">
+                            <label class="slds-form-element__label" for="firstName">{!$ObjectType.Contact.Fields.FirstName.Label}</label>
+                            <input name="firstName" ng-model="wrapper.contact.FirstName" class="slds-input" type="text"
+                                    ng-maxlength="{!$ObjectType.Contact.Fields.FirstName.Length}"  />
+                            <!-- エラーメッセージ -->
+                            <div ng-messages="inputForm.firstName.$error" ng-if="inputForm.firstName.$dirty">
+                                <div ng-message="maxlength" class="slds-form-element__help">Max Length = {!$ObjectType.Contact.Fields.FirstName.Length}</div>
+                            </div>
+                        </div>
+                        <div class="slds-form-element__help"></div>
+                    </div>
+                    <div class="slds-form-element__row">
+                        <!-- 電話 -->
+                        <div class="slds-form-element slds-size--1-of-1" ng-class="{'slds-has-error': inputForm.phone.$invalid && inputForm.phone.$dirty}">
+                            <label class="slds-form-element__label" for="phone">{!$ObjectType.Contact.Fields.Phone.Label}</label>
+                            <input name="phone" ng-model="wrapper.contact.Phone" class="slds-input" type="tel"
+                                                 ng-maxlength="{!$ObjectType.Contact.Fields.Phone.Length}" />
+                            <!-- エラーメッセージ -->
+                            <div ng-messages="inputForm.phone.$error" ng-if="inputForm.phone.$dirty">
+                                <div ng-message="required" class="slds-form-element__help">『{!$ObjectType.Contact.Fields.Phone.Label}』を入力してください</div>
+                                <div ng-message="maxlength" class="slds-form-element__help">Max Length = {!$ObjectType.Contact.Fields.Phone.Length}</div>
+                            </div>
+                        </div>
+                        <div class="slds-form-element__help"></div>
+                    </div>
+                    <div class="slds-form-element__row">
+                        <!-- 部署 -->
+                        <div class="slds-form-element slds-size--1-of-1" ng-class="{'slds-has-error': inputForm.department.$invalid && inputForm.department.$dirty}">
+                            <label class="slds-form-element__label" for="department">{!$ObjectType.Contact.Fields.Department.Label}</label>
+                            <input name="department" ng-model="wrapper.contact.Department" class="slds-input" type="tel"
+                                                 ng-maxlength="{!$ObjectType.Contact.Fields.Department.Length}" />
+                            <!-- エラーメッセージ -->
+                            <div ng-messages="inputForm.phone.$error" ng-if="inputForm.phone.$dirty">
+                                <div ng-message="required" class="slds-form-element__help">『{!$ObjectType.Contact.Fields.Department.Label}』を入力してください</div>
+                                <div ng-message="maxlength" class="slds-form-element__help">Max Length = {!$ObjectType.Contact.Fields.Department.Length}</div>
+                            </div>
+                        </div>
+                        <div class="slds-form-element__help"></div>
+                    </div>
+                </div>
+            </fieldset>
+            <!-- ボタン -->
+            <div class="slds-m-top--large">
+                <button ng-click="next($event)" class="slds-button slds-button--brand" ng-disabled="inputForm.$invalid || isLocked">次へ</button>
+                <button ng-click="back($event)" class="slds-button slds-button--neutral">戻る</button>
+            </div>
+        </form>
+    </div>
+</apex:page>

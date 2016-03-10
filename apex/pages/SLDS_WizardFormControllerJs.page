@@ -1,0 +1,112 @@
+<apex:page >
+    <script type="text/javascript">
+        (function(){
+            "use strict";
+            beenFocused = true;
+
+            var app = angular.module("Controllers", ["Services"]);
+
+            // 例外処理
+            app.factory("$exceptionHandler", function () {
+                return function (exception, cause) {
+                    console.log(exception.message);
+                    var msg = "画面の処理中にエラーが発生しました。" + "ご迷惑をおかけしております。";
+                    alert(msg);
+                };
+            });
+
+            // 共通変数
+            app.factory('sfdcObjects', function() {
+                return {
+                    account : {},
+                    contact : {},
+                    opportunity : {}
+                };
+            });
+        
+            // SLDS_WizardFormAccountCtrl
+            app.controller("SLDS_WizardFormAccountCtrl", ["$scope", "sfdcObjects", "$routeParams", "SLDS_WizardFormServices"
+                                                                    , function($scope, sfdcObjects, $routeParams, helper) {
+                try {
+                    $scope.wrapper = sfdcObjects;
+                    $scope.isLocked = false;
+                    $scope.process = 0;
+                    // 次へ
+                    $scope.next = function(event) {
+                        event.preventDefault();
+                        location.href="#/contact/";
+                    }
+                } catch (e) {
+                    throw e;
+                }
+            }]);
+
+            // SLDS_WizardFormContactCtrl
+            app.controller("SLDS_WizardFormContactCtrl", ["$scope", "sfdcObjects", "$routeParams", "SLDS_WizardFormServices"
+                                                                    , function($scope, sfdcObjects, $routeParams, helper) {
+                try {
+                    $scope.wrapper = sfdcObjects;
+                    $scope.isLocked = false;
+                    $scope.process = 33;
+                    // 次へ
+                    $scope.next = function(event) {
+                        event.preventDefault();
+                        location.href="#/opportunity/";
+                    }
+                    // 戻る
+                    $scope.back = function(event) {
+                        event.preventDefault();
+                        location.href="#/";
+                    }
+                } catch (e) {
+                    throw e;
+                }
+            }]);
+        
+            // SLDS_WizardFormOpportunityCtrl
+            app.controller("SLDS_WizardFormOpportunityCtrl", ["$scope", "sfdcObjects", "$routeParams", "SLDS_WizardFormServices"
+                                                                    , function($scope, sfdcObjects, $routeParams, helper) {
+                try {
+                    $scope.wrapper = sfdcObjects;
+                    $scope.isLocked = false;
+                    $scope.process = 66;
+                    // 次へ
+                    $scope.next = function(event) {
+                        event.preventDefault();
+                        location.href="#/result/";
+                    }
+                    // 戻る
+                    $scope.back = function(event) {
+                        event.preventDefault();
+                        location.href="#/contact";
+                    }
+                } catch (e) {
+                    throw e;
+                }
+            }]);
+
+            // SLDS_WizardFormResultCtrl
+            app.controller("SLDS_WizardFormResultCtrl", ["$scope", "sfdcObjects", "$routeParams", "SLDS_WizardFormServices"
+                                                                    , function($scope, sfdcObjects, $routeParams, helper) {
+                try {
+                    $scope.wrapper = sfdcObjects;
+                    $scope.isLocked = false;
+                    $scope.process = 100;
+                    // 保存
+                    $scope.save = function(event) {
+                        event.preventDefault();
+                        $scope.isLocked = true;
+                        helper.save($scope);
+                    }
+                    // 戻る
+                    $scope.back = function(event) {
+                        event.preventDefault();
+                        location.href="#/opportunity";
+                    }
+                } catch (e) {
+                    throw e;
+                }
+            }]);
+        })();
+    </script>
+</apex:page>

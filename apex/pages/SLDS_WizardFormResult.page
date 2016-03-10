@@ -1,0 +1,157 @@
+<apex:page showHeader="false" applyHtmlTag="false" applyBodyTag="false" standardStylesheets="false">
+    <div class="slds" id="input-form">
+        <!-- Navi -->
+        <c:SLDS_WizardFormNavi />
+        <!-- Form -->
+        <form name="resultForm" novalidate="true" class="slds-m-horizontal--small">
+            <!-- メッセージ -->
+            <div class="slds-box slds-theme--info slds-m-bottom--small" ng-show="!!messages.length">
+                <p><span ng-bind="messages"></span></p>
+            </div>
+            <!-- Account -->
+            <div class="slds-box">
+                <!-- 基本情報 -->
+                <fieldset class="slds-form--compound">
+                    <legend class="slds-form-element__label"></legend>
+                    <div class="form-element__group">
+                        <div class="slds-form-element__row">
+                            <!-- 取引先名 -->
+                            <div class="slds-form-element slds-size--1-of-1">
+                                <span class="slds-form-element__label">{!$ObjectType.Account.Fields.Name.Label}</span>
+                                <div class="slds-form-element__control slds-has-divider--bottom">
+                                    <span class="slds-form-element__static">
+                                        <span ng-bind="wrapper.account.Name" />
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <!-- 住所 -->
+                <fieldset class="slds-form--compound">
+                    <legend class="slds-form-element__label"></legend>
+                    <div class="form-element__group">
+                        <div class="slds-form-element__row">
+                            <!-- 郵便番号(請求先) -->
+                            <div class="slds-form-element slds-size--1-of-2" style="width: 50%;">
+                                <span class="slds-form-element__label">{!$ObjectType.Account.Fields.BillingPostalCode.Label}</span>
+                                <div class="slds-form-element__control slds-has-divider--bottom">
+                                    <span class="slds-form-element__static">
+                                        <span ng-bind="wrapper.account.BillingPostalCode" />
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-form-element__row">
+                            <!-- 都道府県(請求先) -->
+                            <div class="slds-form-element slds-size--1-of-2">
+                                <span class="slds-form-element__label">{!$ObjectType.Account.Fields.BillingState.Label}</span>
+                                <div class="slds-form-element__control slds-has-divider--bottom">
+                                    <span class="slds-form-element__static">
+                                        <span ng-bind="wrapper.account.BillingState" />
+                                    </span>
+                                </div>
+                            </div>
+                            <!-- 市区郡(請求先) -->
+                            <div class="slds-form-element slds-size--1-of-2">
+                                <span class="slds-form-element__label">{!$ObjectType.Account.Fields.BillingCity.Label}</span>
+                                <div class="slds-form-element__control slds-has-divider--bottom">
+                                    <span class="slds-form-element__static">
+                                        <span ng-bind="wrapper.account.BillingCity" />
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-form-element__row">
+                            <!-- 町名・番地(請求先) -->
+                            <div class="slds-form-element slds-size--1-of-1">
+                                <span class="slds-form-element__label">{!$ObjectType.Account.Fields.BillingStreet.Label}</span>
+                                <div class="slds-form-element__control slds-has-divider--bottom">
+                                    <span class="slds-form-element__static">
+                                        <span ng-bind="wrapper.account.BillingStreet" style="white-space: pre-line;" />
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <!-- Contact -->
+            <div class="slds-box slds-m-top--small">
+                <!-- 基本情報 -->
+                <fieldset class="slds-form--compound">
+                    <legend class="slds-form-element__label"></legend>
+                    <div class="form-element__group">
+                        <div class="slds-form-element__row">
+                            <!-- 姓 -->
+                            <div class="slds-form-element slds-size--1-of-2">
+                                <span class="slds-form-element__label">{!$ObjectType.Contact.Fields.LastName.Label}</span>
+                                <div class="slds-form-element__control slds-has-divider--bottom">
+                                    <span class="slds-form-element__static">
+                                        <span ng-bind="wrapper.contact.LastName" />
+                                    </span>
+                                </div>
+                            </div>
+                            <!-- 名 -->
+                            <div class="slds-form-element slds-size--1-of-2">
+                                <span class="slds-form-element__label">{!$ObjectType.Contact.Fields.FirstName.Label}</span>
+                                <div class="slds-form-element__control slds-has-divider--bottom">
+                                    <span class="slds-form-element__static">
+                                        <span ng-bind="wrapper.contact.FirstName" />
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-form-element__row">
+                            <!-- 電話 -->
+                            <div class="slds-form-element slds-size--1-of-1">
+                                <span class="slds-form-element__label">{!$ObjectType.Contact.Fields.Phone.Label}</span>
+                                <div class="slds-form-element__control slds-has-divider--bottom">
+                                    <span class="slds-form-element__static">
+                                        <span ng-bind="wrapper.contact.Phone" />
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-form-element__row">
+                            <!-- 部署 -->
+                            <div class="slds-form-element slds-size--1-of-1">
+                                <span class="slds-form-element__label">{!$ObjectType.Contact.Fields.Department.Label}</span>
+                                <div class="slds-form-element__control slds-has-divider--bottom">
+                                    <span class="slds-form-element__static">
+                                        <span ng-bind="wrapper.contact.Department" />
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <!-- Opportunity -->
+            <div class="slds-box slds-m-top--small">
+                <!-- 基本情報 -->
+                <fieldset class="slds-form--compound">
+                    <legend class="slds-form-element__label"></legend>
+                    <div class="form-element__group">
+                        <div class="slds-form-element__row">
+                            <!-- 商談名 -->
+                            <div class="slds-form-element slds-size--1-of-1">
+                                <span class="slds-form-element__label">{!$ObjectType.Opportunity.Fields.Name.Label}</span>
+                                <div class="slds-form-element__control slds-has-divider--bottom">
+                                    <span class="slds-form-element__static">
+                                        <span ng-bind="wrapper.opportunity.Name" />
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <!-- ボタン -->
+            <div class="slds-m-top--large">
+                <button ng-click="save($event)" class="slds-button slds-button--brand" ng-disabled="isLocked">保存</button>
+                <button ng-click="back($event)" class="slds-button slds-button--neutral">戻る</button>
+            </div>
+        </form>
+    </div>
+</apex:page>

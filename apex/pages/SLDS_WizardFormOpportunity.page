@@ -1,0 +1,26 @@
+<apex:page showHeader="false" applyHtmlTag="false" applyBodyTag="false" standardStylesheets="false">
+    <div class="slds" id="input-form">
+        <!-- Navi -->
+        <c:SLDS_WizardFormNavi />
+        <!-- Form -->
+        <form name="inputForm" novalidate="true" class="slds-m-horizontal--small">
+            <!-- 姓 -->
+            <div class="slds-form-element slds-is-required" ng-class="{'slds-has-error': inputForm.oppName.$invalid && inputForm.oppName.$dirty}">
+                <label class="slds-form-element__label" for="oppName">{!$ObjectType.Opportunity.Fields.Name.Label}</label>
+                <div class="slds-form-element__control">
+                    <input name="oppName" ng-model="wrapper.opportunity.Name" class="slds-input" type="text"
+                                 required="true" ng-maxlength="{!$ObjectType.Opportunity.Fields.Name.Length}"  />
+                    <div ng-messages="inputForm.oppName.$error" ng-if="inputForm.oppName.$dirty">
+                        <div ng-message="required" class="slds-form-element__help">『{!$ObjectType.Opportunity.Fields.Name.Label}』を入力してください</div>
+                        <div ng-message="maxlength" class="slds-form-element__help">Max Length = {!$ObjectType.Opportunity.Fields.Name.Label}</div>
+                    </div>
+                </div>
+            </div>
+            <!-- ボタン -->
+            <div class="slds-m-top--large">
+                <button ng-click="next($event)" class="slds-button slds-button--brand" ng-disabled="inputForm.$invalid || isLocked">次へ</button>
+                <button ng-click="back($event)" class="slds-button slds-button--neutral">戻る</button>
+            </div>
+        </form>
+    </div>
+</apex:page>

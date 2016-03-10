@@ -1,0 +1,35 @@
+<apex:component >
+    <div class="slds-m-around--small slds-m-bottom--medium">
+        <div class="slds-wizard" role="navigation">
+            <ol class="slds-wizard__list" style="z-index:2">
+                <li class="slds-wizard__item slds-is-active">
+                    <a href="#/" class="slds-wizard__link">
+                        <span class="slds-wizard__marker"></span>
+                        <span class="slds-wizard__label slds-text-heading--label slds-truncate">Account</span>
+                    </a>
+                </li>
+                <li class="slds-wizard__item" ng-class="{'slds-is-active': process >= 33}">
+                    <a href="#/contact" class="slds-wizard__link">
+                        <span class="slds-wizard__marker"></span>
+                        <span class="slds-wizard__label slds-text-heading--label slds-truncate">Contact</span>
+                    </a>
+                </li>
+                <li class="slds-wizard__item" ng-class="{'slds-is-active': process >= 66}">
+                    <a href="#/opportunity" class="slds-wizard__link">
+                        <span class="slds-wizard__marker"></span>
+                        <span class="slds-wizard__label slds-text-heading--label slds-truncate">Opportunity</span>
+                    </a>
+                </li>
+                <li class="slds-wizard__item" ng-class="{'slds-is-active': process >= 100}">
+                    <a href="#/result" class="slds-wizard__link">
+                        <span class="slds-wizard__marker"></span>
+                        <span class="slds-wizard__label slds-text-heading--label slds-truncate">Review</span>
+                    </a>
+                </li>
+            </ol>
+            <span class="slds-wizard__progress" style="z-index:1">
+                <span class="slds-wizard__progress-bar" style="width:{{process}}%;"></span>
+            </span>
+        </div>
+    </div>
+</apex:component>

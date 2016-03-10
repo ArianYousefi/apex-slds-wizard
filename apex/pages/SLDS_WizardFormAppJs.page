@@ -1,0 +1,25 @@
+<apex:page >
+    <script type="text/javascript">
+        angular.module("myApp", ["Controllers", "ngRoute", "ngMessages"]).config(["$routeProvider", function($routeProvider){
+            $routeProvider.when("/", {
+                controller : "SLDS_WizardFormAccountCtrl",
+                templateUrl : "/apex/SLDS_WizardFormAccount"
+            }).
+            when("/contact", {
+                controller : "SLDS_WizardFormContactCtrl",
+                templateUrl : "/apex/SLDS_WizardFormContact"
+            }).
+            when("/opportunity", {
+                controller : "SLDS_WizardFormOpportunityCtrl",
+                templateUrl : "/apex/SLDS_WizardFormOpportunity"
+            }).
+            when("/result", {
+                controller : "SLDS_WizardFormResultCtrl",
+                templateUrl : "/apex/SLDS_WizardFormResult"
+            }).
+            otherwise({
+                redirectTo: "/"
+            });
+        }]);
+    </script>
+</apex:page>

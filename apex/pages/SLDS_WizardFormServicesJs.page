@@ -1,0 +1,42 @@
+<apex:page >
+    <script type="text/javascript">
+        var app = angular.module("Services", [])
+
+        // SLDS_WizardFormServices
+        app.factory("SLDS_WizardFormServices", ["$rootScope", function($rootScope) {
+            // 初期処理
+            function init(scope) {
+                
+            }
+            // 保存処理
+            function save(scope) {
+                var account = scope.wrapper.account;
+                var contact = scope.wrapper.contact;
+                var opportunity = scope.wrapper.opportunity;
+
+                SLDS_WizardFormController.doSave(account, contact, opportunity, function(result, event) {
+                    if(event.status) {
+                        if (result.messages.length > 0) {
+                            scope.messages = result.messages;
+                        } else {
+                            location.href= "/" + result.recordId;
+                        }
+                    } else {
+                        scope.messages = event.message;
+                    }
+                    scope.isLocked = false;
+                    $rootScope.$apply();
+                });
+            }
+
+            return {
+                init: function(scope) {
+                    return init(scope);
+                },
+                save: function(scope) {
+                    return save(scope);
+                }
+            };
+        }]);
+    </script>
+</apex:page>
